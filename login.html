@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/stylelogin.css">
+    <title>Login de Usuário</title>
+</head>
+<body>
+    <div class="container-login">
+        <div class="logo-container">
+            <img src="./imagens/logo-user.png" alt="Logo Usuário" height="80px">
+        </div>
+
+        <div class="input-container">
+            <input type="email" placeholder="Digite seu email..." required id="email">
+        </div>
+
+        <div class="input-container">
+            <input type="password" placeholder="Digite sua senha..." required id="senha">
+        </div>
+
+        <div class="button-container">
+            <button onclick="logar()">Entrar</button>
+        </div>
+
+        <a href="#" class="forgot-password">Esqueceu a senha?</a>
+    </div>
+
+    <script>
+        function logar() {
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+
+            if (email === "admin" && senha === "admin") {
+                alert("Acessando sistema");
+                window.location.href = "index.html";
+            } else {
+                alert("Usuário ou senha inválido");
+            }
+        }
+    </script>
+</body>
+</html>
