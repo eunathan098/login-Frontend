@@ -7,11 +7,11 @@
 
 body {
     display: flex;
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    width: 100%;
     align-items: center;
     justify-content: center;
-    background-color: rgba(73, 73, 241, 0.692);
+    background: linear-gradient(blue, black);
     text-align: center;
 }
 
@@ -22,9 +22,10 @@ body {
     justify-content: center;
     width: 400px;
     padding: 40px;
-    background-color: rgba(0, 0, 0, 0.099);
+    background-color: #fffffff5;
     border-radius: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    visibility: hidden; /* Para ser revelado pelo ScrollReveal */
 }
 
 .logo-container img {
@@ -32,22 +33,35 @@ body {
 }
 
 .input-container {
+    display: flex;
+    padding: 0 10px;
+    gap: 5px;
+    align-items: center;
     width: 100%;
     margin-bottom: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.33);
+    border-radius: 5px; /* Adicionei borda arredondada para melhor design */
+}
+
+.img-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 input {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;
     outline: none;
+    border: none;
+    font-size: 16px;
 }
 
 button {
     width: 150px;
     padding: 10px;
-    background-color: rgba(158, 158, 238, 0.692);
+    background: linear-gradient(blue, rgba(0, 0, 0, 0.515));
     border: none;
     border-radius: 10px;
     color: white;
@@ -56,9 +70,9 @@ button {
 }
 
 button:hover {
-    background-color: transparent;
-    color: rgba(212, 212, 242, 0.692);
-    border: 1px solid rgba(255, 255, 255, 0.492);
+    background-color: #68bdfa;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.49);
 }
 
 .forgot-password {
