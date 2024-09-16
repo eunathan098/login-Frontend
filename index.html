@@ -25,7 +25,7 @@
                 <img src="./imagens/passwordfechado.png" alt="" height="20px">
             </div>
             <input type="password" placeholder="Digite sua senha..." required id="senha">
-            <div class="viewpassword" onclick="togglePasswordVisibility()">
+            <div class="viewpassword" onclick="viewPassword()">
                 <img id="togglePassword" src="imagens/olhofechado.png" alt="" height="20px">
             </div>
         </div>
@@ -52,24 +52,23 @@
         }
 
         window.sr = ScrollReveal({ reset: true });
-
         sr.reveal(".container-login", {
             duration: 1500,
             distance: '20px',
             origin: 'top'
         });
 
-        function togglePasswordVisibility() {
+        function viewPassword() {
     const passwordInput = document.getElementById("senha");
     const togglePasswordIcon = document.getElementById("togglePassword");
 
-    // Verifica o tipo atual do input de senha
+    
     if (passwordInput.type === "password") {
-        passwordInput.type = "text"; // Altera para mostrar a senha
-        togglePasswordIcon.src = "imagens/olhoaberto.png"; // Muda o ícone
+        passwordInput.type = "text"; 
+        togglePasswordIcon.src = "imagens/olhoaberto.png";
     } else {
-        passwordInput.type = "password"; // Altera para esconder a senha
-        togglePasswordIcon.src = "imagens/olhofechado.png"; // Muda o ícone de volta
+        passwordInput.type = "password";
+        togglePasswordIcon.src = "imagens/olhofechado.png";
     }
 }
 

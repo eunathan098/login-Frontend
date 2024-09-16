@@ -16,13 +16,13 @@
             <div class="container-navigation">
                 <ul class="ul-navigation">
                     <li>
-                        <img class="header-img" src="./imagens/notificacao.png" alt="Notificação" height="35px">
+                        <img class="header-img" src="./imagens/notificacao.png" alt="Notificação">
                     </li>
                     <li>
-                        <img class="header-img" src="./imagens/logo-configuration.png" alt="Configuração" height="35px">
+                        <img class="header-img" src="./imagens/logo-configuration.png" alt="Configuração">
                     </li>
                 </ul>
-                <img src="./imagens/logo-user.png" alt="Usuário" onclick="abrirMenu()" height="35px">
+                <img src="./imagens/logo-user.png" alt="Usuário" onclick="abrirMenu()" height="30px">
             </div>
         </nav>
     </header>
@@ -41,7 +41,7 @@
     </div>
     
     <div class="container-form">
-        <form class="row g-4">
+        <form class="row g-3 shadow-lg p-7 mb-5 bg-body-tertiary rounded" class="form">
             <div class="col-12">
                 <label for="inputName" class="form-label">Nome do produto:</label>
                 <input type="text" class="form-control" id="inputName" placeholder="Digite o nome do produto...">
@@ -123,6 +123,15 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
+        
+         window.sr = ScrollReveal({ reset: true });
+        sr.reveal(".container-form", {
+            duration: 1500,
+            distance: '20px',
+            origin: 'top'
+        });
+
+
         function abrirMenu() {
             const menuLateral = document.getElementById("menu-lateral");
             if (menuLateral.style.display === "block") {
@@ -136,6 +145,8 @@
             const tableContainer = document.getElementById("container-table");
             tableContainer.style.display = "block";
         }
+
+
     </script>
 </body>
 </html>
