@@ -31,23 +31,45 @@
         </div>
 
         <div class="button-container">
-            <button onclick="logar()">Entrar</button>
+            <button onclick="logar(event)">Entrar</button>
         </div>
 
         <a href="#" class="forgot-password">Esqueceu a senha?</a>
-        <a href="./cadastro.html" class="forgot-password"> Cadastre-se</a>
+        <a href="./cadastro.html" class="forgot-password">Cadastre-se</a>
     </div>
 
     <script>
-        function logar() {
+        async function logar(event) {
+            event.preventDefault();
+
             const email = document.getElementById("email").value;
             const senha = document.getElementById("senha").value;
 
-            if (email === "admin" && senha === "admin") {
-                alert("Acessando sistema");
-                window.location.href = "system.html";
-            } else {
-                alert("Usuário ou senha inválido");
+            if (!email || !senha) {
+                alert('Por favor, preencha todos os campos!');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/users/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password: senha })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert('Login bem-sucedido! Redirecionando...');
+                    window.location.href = 'system.html';
+                } else {
+                    alert(`Erro: ${data.message}`);
+                }
+            } catch (error) {
+                console.error('Erro ao tentar fazer login', error);
+                alert('Erro ao tentar fazer login. Tente novamente.');
             }
         }
 
@@ -59,19 +81,17 @@
         });
 
         function viewPassword() {
-    const passwordInput = document.getElementById("senha");
-    const togglePasswordIcon = document.getElementById("togglePassword");
+            const passwordInput = document.getElementById("senha");
+            const togglePasswordIcon = document.getElementById("togglePassword");
 
-    
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text"; 
-        togglePasswordIcon.src = "imagens/olhoaberto.png";
-    } else {
-        passwordInput.type = "password";
-        togglePasswordIcon.src = "imagens/olhofechado.png";
-    }
-}
-
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                togglePasswordIcon.src = "imagens/olhoaberto.png";
+            } else {
+                passwordInput.type = "password";
+                togglePasswordIcon.src = "imagens/olhofechado.png";
+            }
+        }
     </script>
 </body>
 </html>

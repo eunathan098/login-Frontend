@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container-login" id="container-login">
-       <form>
+       <form id="registrationForm">
         <div class="back-page">
             <a href="index.html">
                 <img src="./imagens/back.png" alt="" height="20px">
@@ -22,30 +22,29 @@
             </div>
             <input type="text" placeholder="Digite seu nome completo...." required id="name">
         </div>
-            <div class="container-input">
-                <div class="container-label">
-                    <label> Email: </label>
-                </div>
-                <input type="email" placeholder="Digite seu email...." required id="email">
+        <div class="container-input">
+            <div class="container-label">
+                <label> Email: </label>
             </div>
-            <div class="container-input">
-                <div class="container-label">
-                    <label> Telefone: </label>
-                </div>
-                <input type="tel" placeholder="Número de telefone...." required id="phone">
+            <input type="email" placeholder="Digite seu email...." required id="email">
+        </div>
+        <div class="container-input">
+            <div class="container-label">
+                <label> Telefone: </label>
             </div>
-         <div class="container-input">
+            <input type="tel" placeholder="Número de telefone...." required id="phone">
+        </div>
+        <div class="container-input">
             <div class="container-label">
                 <label> Senha: </label>
-            </div>            
+            </div>
             <input type="password" placeholder="Cadastre uma senha...." required id="password">
         </div>
-        <input type="submit" value="Cadastrar" class="btn-enviar" onclick="cadastroEfetuado(event)">
+        <input type="submit" value="Cadastrar" class="btn-enviar">
        </form>
     </div>
 
     <script>
-        
         window.sr = ScrollReveal({ reset: true });
 
         sr.reveal(".container-login", {
@@ -54,35 +53,45 @@
             origin: 'top'
         });
 
-        function togglePasswordVisibility() {
-                const passwordInput = document.getElementById("password");
-                const togglePasswordIcon = document.getElementById("togglePassword");
+        document.getElementById('registrationForm').addEventListener('submit', async (event) => {
+            event.preventDefault();  // Previne o comportamento padrão do formulário
 
-                if (passwordInput.type === "password") {
-                    passwordInput.type = "text"; 
-                    togglePasswordIcon.src = "imagens/olhoaberto.png"; 
-                } else {
-                    passwordInput.type = "password"; 
-                    togglePasswordIcon.src = "imagens/olhofechado.png"; 
-                }
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let password = document.getElementById("password").value;
+
+            if (!name || !email || !phone || !password) {
+                alert("Por favor preencha todos os campos!");
+                return;
             }
 
-        function cadastroEfetuado(event) {
-                event.preventDefault();  // Previne o comportamento padrão do formulário
-                let name = document.getElementById("name").value;
-                let email = document.getElementById("email").value;
-                let phone = document.getElementById("phone").value;
-                let password = document.getElementById("password").value;
+            try {
+                const response = await fetch('http://localhost:3000/users/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        password: password
+                    })
+                });
 
-                if (!name || !email || !phone || !password) {
-                    alert("Por favor preencha todos os campos!");
-                    return;
-                } else {
-                    alert(`Usuário ${name} cadastrado com sucesso`);
-                    alert("Redirecionando...");
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert(`Usuário ${name} cadastrado com sucesso!`);
                     window.location.href = "index.html";
+                } else {
+                    alert(`Falha no cadastro: ${data.message}`);
                 }
+            } catch (error) {
+                alert(`Erro: ${error.message}`);
             }
+        });
     </script>
 </body>
 </html>
