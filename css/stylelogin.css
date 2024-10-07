@@ -15,6 +15,9 @@ body {
     text-align: center;
 }
 
+.container-geral{
+    display: flex
+}
 .container-login {
     display: flex;
     flex-direction: column;
@@ -24,8 +27,16 @@ body {
     padding: 40px;
     background-color: #fffffff5;
     border-radius: 0px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-    visibility: hidden; /* Para ser revelado pelo ScrollReveal */
+    box-shadow: 0px 0px 25px 25px rgba(0, 0, 0, 0.137);
+    visibility: hidden;
+}
+
+.container-img{
+    width: 400px;
+}
+
+.container-img img{
+    height: 378px;
 }
 
 .logo-container img {
@@ -40,7 +51,7 @@ body {
     width: 100%;
     margin-bottom: 15px;
     border: 1px solid rgba(0, 0, 0, 0.33);
-    border-radius: 5px; /* Adicionei borda arredondada para melhor design */
+    border-radius: 5px;
 }
 
 .img-input {
@@ -74,6 +85,7 @@ button {
     color: white;
     cursor: pointer;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.271);
 }
 
 button:hover {
@@ -88,8 +100,15 @@ button:hover {
     margin-top: 10px;
     font-size: 14px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
 }
 
 .forgot-password:hover {
     text-decoration: underline;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .container-login{
+        width:  335px;
+    }
 }

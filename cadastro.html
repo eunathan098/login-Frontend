@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylecadastro.css">
+    <link rel="icon" href="./imagens/icon.png" type="image/x-icon">
     <script src="https://unpkg.com/scrollreveal"></script>
     <title>Cadastro de usuário</title>
 </head>
@@ -45,6 +46,7 @@
     </div>
 
     <script>
+        //Scrool do container de Cadastro de usuário
         window.sr = ScrollReveal({ reset: true });
 
         sr.reveal(".container-login", {
@@ -52,6 +54,8 @@
             distance: '20px',
             origin: 'top'
         });
+
+        //Envio dos daados cadastrados
 
         document.getElementById('registrationForm').addEventListener('submit', async (event) => {
             event.preventDefault();  // Previne o comportamento padrão do formulário
