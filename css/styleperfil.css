@@ -108,7 +108,7 @@ nav {
 }
 
 .container-perfil-user{
-    padding: 30px;
+    padding: 10px;
     height: 100%;
     background-color: #e8f1f8;
 }
@@ -117,56 +117,79 @@ form{
     display: flex;
     padding: 10px;
     flex-direction: column;
-    
     gap: 10px;
     border: 3px solid rgba(18, 18, 18, 0.173);
 }
 
-.container-form-img{
+.container-form-img {
     display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    flex-direction: column; /* Garante que os elementos fiquem empilhados verticalmente */
+    align-items: center; /* Centraliza os elementos horizontalmente */
+    justify-content: center; /* Centraliza os elementos verticalmente */
     padding: 15px;
-    width: 500px;
-    background-color:#2271b3;
+    width: 100%; /* Ajusta a largura para ocupar todo o espaço disponível */
+    max-width: 500px; /* Limita a largura máxima a 500px */
+    background-color: #2271b3;
+    margin: 0 auto; /* Centraliza o container horizontalmente */
 }
 
-.form-img{
-    height: 150px;
-    width: 150px;
+.form-img {
+    height: 70px;
+    width: 70px;
+    margin-bottom: 10px; /* Adiciona um espaço abaixo da imagem */
 }
 
 .form-campos{
+    display: flex;
     background-color: #e8f1f8;
-    border: 1px solid rgba(0, 0, 0, 0.287);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.123);
+}
+
+.form-campos input{
+    font-size: 15px;
+}
+
+label{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.409);
+    padding-left: 5px;
+    text-align: left;
+    width: 100px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 input{
     background-color: #e8f1f8;
     border: none;
 }
 
-.btn-envio{
+.btn-envio {
+    width: 100%; /* Ajusta a largura do botão para ocupar todo o espaço disponível */
+    max-width: 320px; /* Limita a largura máxima do botão */
+    margin-top: 10px; /* Espaço entre a imagem e o botão */
     padding: 10px;
+    font-size: 12px;
     color: white;
     background-color: #319aef;
+    text-align: center; /* Centraliza o texto do botão */
+    border: none;
+    cursor: pointer;
 }
 
 
 
-/* Responsividade para dispositivos menores */
+/* Ajustes para telas pequenas */
 @media (min-width: 320px) and (max-width: 480px) {
-    .header-img {
-        display: none;
+    .container-form-img {
+        width: 100%; /* Ocupa toda a largura da tela */
+        padding: 10px;
     }
 
-    .container-perfil-user{
-        width: 95%;
+    .form-img {
+        height: 60px;
+        width: 60px;
     }
 
-    .container-form-img{
-        width: 370px;
+    .btn-envio {
+        width: 100%; /* Garante que o botão continue responsivo */
     }
-
 }
