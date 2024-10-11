@@ -17,6 +17,7 @@ body {
 
 .container-login {
     display: flex;
+    margin: 20px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -24,30 +25,31 @@ body {
     padding: 40px;
     background-color: #fffffff5;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-    visibility: hidden; /* Para ser revelado pelo ScrollReveal */
+    visibility: hidden;
+    /* Para ser revelado pelo ScrollReveal */
 }
 
-form{
+form {
     display: flex;
     gap: 5px;
     flex-direction: column;
     padding: 10px;
 }
 
-.back-page{
+.back-page {
     display: flex;
     width: 100vw auto;
     text-align: left;
     justify-content: left;
 }
 
-h1{
+h1 {
     font-size: 25px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-bottom: 20px;
 }
 
-.container-input{
+.container-input {
     display: flex;
     text-align: center;
     padding: 10px;
@@ -55,25 +57,63 @@ h1{
     border: 1px solid rgba(0, 0, 0, 0.22);
 }
 
-.container-label{
+.container-label {
     padding: 5px;
     width: 70px;
 }
 
-label{
+label {
     color: #2271b3;
-    font-size: 15px;
+    font-size: 18px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-input{
+input {
     border: none;
     outline: none;
 }
 
-.btn-enviar{
+.btn-enviar {
     padding: 10px;
     color: white;
     background: #2271b3;
     cursor: pointer;
+}
+
+.container-sucess {
+    position: fixed;
+    top: 20px;
+    right: -100%;
+    /* Inicialmente fora da tela */
+    background-color: #90EE90;
+    /* Cor de sucesso */
+    color: #612A3D;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1000;
+    transition: right 0.5s ease;
+    /* Transição suave para entrada/saída */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    /* Escondido inicialmente */
+}
+
+.container-sucess.show {
+    display: block;
+    right: 20px;
+    /* Move para dentro da tela */
+}
+
+.container-sucess p {
+    color: rgba(3, 51, 3, 0.714);
+    font-weight: bold;
+}
+
+.container-error {
+    top: 10%;
+    left: 5%;
+    display: none;
+    padding: 15px;
+    color: white;
+    background-color: red;
 }

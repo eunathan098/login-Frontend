@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/stylesystem.css">
+    <link rel="stylesheet" href="css/styleperfil.css">
     <link rel="icon" href="./imagens/icon.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -34,7 +34,7 @@
     <div class="menu-lateral" id="menu-lateral">
         <div class="menu-lateral-list">
             <ul>
-                <li id="profile-user">Perfil</li>
+                <li>Perfil</li>
                 <li>Produtos</li>
                 <li>Notificações</li>
                 <li>Configurações</li>
@@ -43,59 +43,54 @@
         </div>
     </div>
 
-    <div class="container-dashboard">
-        <div class="container-dashboard">
-            <h1 id="nameUser"> Olá usuário, Boa tarde! </h1><br>
-            <img class="dashboard-img" src="./imagens/dashboardestatica.png" alt="">
-        </div> 
-    </div>
-    <div class="container-dev">
-        <h2> Em Desenvolvimento... </h2>
-    </div>
+    <section class="container-content">
+        <div class="container-perfil-user">
+            <form action="">
+                <div class="container-form-img">
+                    <img class="form-img" src="./imagens/logo-user.png" alt=""><br>
+                    <input class="btn-envio" type="submit" value="Alterar imagem">
+                </div><br>
+                <div class="form-campos">
+                    <label for=""> Nome: </label>
+                    <input type="text" placeholder="nome atual">
+                </div>
 
+                <div class="form-campos">
+                    <label for=""> E-mail: </label>
+                    <input type="email" placeholder="Email atual">
+                </div>
+
+                <div class="form-campos">
+                    <label for=""> Telefone: </label>
+                    <input type="tel" placeholder="Telefone atual">
+                </div>
+
+                <div class="form-campos">
+                    <label for=""> Nova senha: </label>
+                    <input type="password" placeholder="nome atual">
+                </div>
+
+                <div class="form-campos">
+                    <label for=""> Confirmar: </label>
+                    <input type="password" placeholder="confirmar atual">
+                </div><br>
+              
+                    <input class="btn-envio" type="submit" value="Enviar alterações">
+              
+                
+            </form>
+        </div>
+    </section>
+
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script>
-
-     function nomeDeUsuario(){
-        const digiteName = prompt("Digite seu nome: ");
-        const nameUser = document.getElementById("nameUser");
-
-        nameUser.textContent = `Olá ${digiteName}. Boa tarde!`
-     };
-
-     nomeDeUsuario()
-
         function abrirMenu() {
-    const menuLateral = document.getElementById("menu-lateral");
-    menuLateral.style.display = menuLateral.style.display === "block" ? "none" : "block";
-
-    if (menuLateral.style.display === "block") {
-        // Adiciona um event listener para fechar o menu ao clicar fora
-        document.addEventListener('click', fecharMenuFora, true);
-    }
-}
-
-function fecharMenuFora(event) {
-    const menuLateral = document.getElementById("menu-lateral");
-
-    // Verifica se o clique foi fora do menu
-    if (!menuLateral.contains(event.target)) {
-        menuLateral.style.display = "none"; // Fecha o menu
-        document.removeEventListener('click', fecharMenuFora, true); // Remove o event listener após fechar o menu
-    }
-}
-
-function acessarProfileUser(){
-    const profileUser = document.getElementById("profile-user");
-
-    profileUser.addEventListener("click", function(){
-        window.location.href = "perfil.html"
-    })
-}
-acessarProfileUser()
-
+            const menuLateral = document.getElementById("menu-lateral");
+            menuLateral.style.display = menuLateral.style.display === "block" ? "none" : "block";
+        }
     </script>
 </body>
 

@@ -30,6 +30,9 @@
                 <img id="togglePassword" src="imagens/olhofechado.png" alt="" height="20px">
             </div>
         </div>
+        <div class="container-alert" id="alert">
+            <p> Usuário ou senha inválida </p>
+        </div>
 
         <div class="button-container">
             <button onclick="logar(event)">Entrar</button>
@@ -41,22 +44,28 @@
     <script>
         //Logar no sistema
         async function logar(event) {
-            event.preventDefault();
+    event.preventDefault();
 
-            const email = document.getElementById("email").value;
-            const senha = document.getElementById("senha").value;
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+    const textAlert = document.getElementById("alert");
 
-            if (!email || !senha) {
-                alert('Por favor, preencha todos os campos!');
-                return;
-            }
+    if (!email || !senha) {
+        alert('Por favor, preencha todos os campos!');
+        return;
+    }
 
-            if(email === 'admin' && senha === 'admin'){
-                alert("Acessando...")
-                window.location.href = 'system.html'
-            } else {
-                alert('Erro ao inserir senha. tente novamente...')
-            }
+    if (email === 'admin' && senha === 'admin') {
+        textAlert.style.visibility = "visible";
+        textAlert.style.color = "#38B0DE";
+        textAlert.textContent = "Acessando...";
+
+        setTimeout(() => {
+            window.location.href = 'system.html';
+        }, 2000);
+    } else {
+        textAlert.style.visibility = "visible";
+    }
 
             // try {
             //     const response = await fetch('https://web-production-b392.up.railway.app/users/login', {

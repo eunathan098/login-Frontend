@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="css/stylecadastro.css">
     <link rel="icon" href="./imagens/icon.png" type="image/x-icon">
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -41,8 +41,14 @@
             </div>
             <input type="password" placeholder="Cadastre uma senha...." required id="password">
         </div>
-        <input type="submit" value="Cadastrar" class="btn-enviar">
+        <input type="submit" value="Cadastrar" class="btn-enviar" id="btn-cadastrar">
        </form>
+    </div><br>
+    <div class="container-sucess" id="container-sucess">
+        <p> Usuário cadastrado com sucesso! </p>
+    </div>
+    <div class="container-error" id="container-error">
+        <p> Erro no cadastro </p>
     </div>
 
     <script>
@@ -58,44 +64,70 @@
         //Envio dos daados cadastrados
 
         document.getElementById('registrationForm').addEventListener('submit', async (event) => {
-            event.preventDefault();  // Previne o comportamento padrão do formulário
+            event.preventDefault();
 
             let name = document.getElementById("name").value;
             let email = document.getElementById("email").value;
             let phone = document.getElementById("phone").value;
             let password = document.getElementById("password").value;
+            
+            const containerError = document.getElementById("container-error")
 
             if (!name || !email || !phone || !password) {
+                containerError.style.display = "block";
+
                 alert("Por favor preencha todos os campos!");
                 return;
             }
 
-            try {
-                const response = await fetch('https://web-production-b392.up.railway.app/users/create', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        email: email,
-                        phone: phone,
-                        password: password
-                    })
-                });
+            // try {
+            //     const response = await fetch('https://web-production-b392.up.railway.app/users/create', {
+            //         method: 'POST',
+            //         headers: {
+            //             'Content-Type': 'application/json'
+            //         },
+            //         body: JSON.stringify({
+            //             name: name,
+            //             email: email,
+            //             phone: phone,
+            //             password: password
+            //         })
+            //     });
 
-                const data = await response.json();
+            //     const data = await response.json();
 
-                if (response.ok) {
-                    alert(`Usuário ${name} cadastrado com sucesso!`);
-                    window.location.href = "index.html";
-                } else {
-                    alert(`Falha no cadastro: ${data.message}`);
-                }
-            } catch (error) {
-                alert(`Erro: ${error.message}`);
-            }
+            //     if (response.ok) {
+            //         alert(`Usuário ${name} cadastrado com sucesso!`);
+            //         window.location.href = "index.html";
+            //     } else {
+            //         alert(`Falha no cadastro: ${data.message}`);
+            //     }
+            // } catch (error) {
+            //     alert(`Erro: ${error.message}`);
+            // }
         });
+
+        function containerSucessCadastro(){
+            const btnCadastrar = document.getElementById("btn-cadastrar");
+            const containerSucess = document.getElementById("container-sucess");
+            let name = document.getElementById("name").value;
+
+            btnCadastrar.addEventListener("click", function(){
+                containerSucess.style.display = "block";
+                containerSucess.textContent = `Usuário ${name} cadastrado com sucesso`
+                setTimeout(()=> {
+                    containerSucess.classList.add("show");
+                }, 100);
+
+                setTimeout(()=> {
+                    containerSucess.classList.remove("show");
+                    setTimeout(()=> {
+                        containerSucess.style.display = "none";
+                    }, 500);
+                }, 2000)
+            });
+        }
+        containerSucessCadastro()
     </script>
 </body>
 </html>

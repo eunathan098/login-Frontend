@@ -107,6 +107,17 @@ button:hover {
     text-decoration: underline;
 }
 
+.container-alert{
+    display: flex;
+    padding-bottom: 15px;
+    visibility: hidden;
+}
+
+.container-alert p{
+    color: rgba(247, 25, 25, 0.269);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
     .container-login{
         width:  335px;
