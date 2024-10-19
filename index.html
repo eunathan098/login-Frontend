@@ -51,8 +51,7 @@
     const textAlert = document.getElementById("alert");
 
     if (!email || !senha) {
-        alert('Por favor, preencha todos os campos!');
-        return;
+        textAlert.style.display = "block"
     }
 
     if (email === 'admin' && senha === 'admin') {
